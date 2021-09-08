@@ -17,7 +17,7 @@ runs:
   steps:
     - shell: bash
       run: |
-        PYTHONPATH=${{ github.action_path }} && export PYTHONPATH=${{ github.action_path }}
+        PYTHONPATH=${{ github.action_path }}/.. && export PYTHONPATH=${{ github.action_path }}/..
         python3 ${{ github.action_path }}/../sariftoolkit/__main__.py --enable-relativepaths \
           -r "${{ inputs.root }}" \
           -s "${{ inputs.sarif }}"
