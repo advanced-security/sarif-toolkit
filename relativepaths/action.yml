@@ -1,0 +1,23 @@
+name: 'ghascompliance'
+description: 'ghascompliance'
+
+inputs:
+  root:
+    description: Repository owner and repo name
+    default: ${{ github.repository }}
+
+  sarif:
+    description: SARIF File Location
+    # CodeQL Location by default
+    default: ../results
+
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        PYTHONPATH=${{ github.action_path }} && export PYTHONPATH=${{ github.action_path }}
+        python3 ${{ github.action_path }}/sariftoolkit/__main__.py --enable-relativepaths \
+          -r "${{ inputs.root }}" \
+          -s "${{ inputs.sarif }}"
