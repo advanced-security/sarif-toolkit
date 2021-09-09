@@ -6,6 +6,10 @@ inputs:
     description: SARIF File Location
     # CodeQL Location by default
     default: ../results
+    
+  working:
+    description: Working directory
+    default: .
 
 
 runs:
@@ -16,4 +20,6 @@ runs:
         PYTHONPATH=${{ github.action_path }}/.. && export PYTHONPATH=${{ github.action_path }}/..
         python3 ${{ github.action_path }}/../sariftoolkit/__main__.py \
           --enable-relativepaths \
-          --sarif "${{ inputs.sarif }}"
+          --sarif "${{ inputs.sarif }}" \
+          --working "${{ inputs.working }}"
+
