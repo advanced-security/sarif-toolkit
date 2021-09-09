@@ -72,12 +72,6 @@ class RelativePaths(Plugin):
         with open(path) as handle:
             sarif = json.load(handle)
 
-        #  Check if the file is a SARIF file
-        if not sarif.get("$schema", "").startswith(
-            "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema"
-        ):
-            raise Exception(f"Not a SARIF file: {path}")
-
         for run in sarif.get("runs", []):
             tool = run.get("tool", {}).get("driver", {})
             self.logger.info(
