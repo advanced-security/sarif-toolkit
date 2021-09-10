@@ -1,5 +1,5 @@
-name: 'ghascompliance'
-description: 'ghascompliance'
+name: 'sarif-toolkit'
+description: 'sarif-toolkit'
 
 inputs:
   root:
@@ -10,7 +10,6 @@ inputs:
     description: SARIF File Location
     # CodeQL Location by default
     default: ../results
-
 
 runs:
   using: "composite"
