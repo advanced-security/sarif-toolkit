@@ -1,0 +1,24 @@
+name: 'sarif-toolkit'
+description: 'sarif-toolkit'
+
+inputs:
+  sarif:
+    description: SARIF File Location
+    # CodeQL Location by default
+    default: ../results
+    
+  working:
+    description: Working directory
+    default: .
+
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        PYTHONPATH=${{ github.action_path }}/.. && export PYTHONPATH=${{ github.action_path }}/..
+        python3 ${{ github.action_path }}/../sariftoolkit/__main__.py \
+          --enable-submodules \
+          --sarif "${{ inputs.sarif }}" \
+          --working "${{ inputs.working }}"
