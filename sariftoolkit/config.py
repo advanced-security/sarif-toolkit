@@ -14,6 +14,10 @@ class Plugins:
         "RelativePaths", "sariftoolkit.plugins.relativepaths"
     )
 
+    submodules: PluginConfig = PluginConfig(
+        "Submodules", "sariftoolkit.plugins.submodules"
+    )
+
 
 @dataclass
 class Config:
