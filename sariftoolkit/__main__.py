@@ -5,6 +5,7 @@ import argparse
 from sariftoolkit.plugin import loadPlugins
 from sariftoolkit.config import Config, load
 
+
 parser = argparse.ArgumentParser(__name__)
 parser.add_argument("--debug", action="store_true")
 parser.add_argument("-c", "--config", help="Configuration path")
