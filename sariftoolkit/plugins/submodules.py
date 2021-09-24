@@ -143,7 +143,7 @@ class Submodules(Plugin):
     def isFileInSubmodule(self, submodules: List[SubmoduleModel], file: str):
         for sub in submodules:
             if file.startswith(sub.path):
-                new_path = file.replace(sub.path, "", 1)
+                new_path = file.replace(sub.path + "/", "", 1)
                 return (sub, new_path)
         return (None, None)
 
