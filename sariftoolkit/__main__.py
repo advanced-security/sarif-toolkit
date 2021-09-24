@@ -21,6 +21,11 @@ parser_github.add_argument(
     default=os.environ.get("GITHUB_WORKSPACE", "./"),
     help="Root GitHub Directory (default: $GITHUB_WORKSPACE)",
 )
+parser_github.add_argument(
+    "--github-token",
+    default=os.environ.get("GITHUB_TOKEN"),
+    help="GitHub PAT (default: $GITHUB_TOKEN)",
+)
 
 
 if __name__ == "__main__":
@@ -50,7 +55,7 @@ if __name__ == "__main__":
     for plugin in plugins:
         plugin.config.enabled = getattr(arguments, f"enable_{plugin.name.lower()}")
 
-        logging.info(f"Plugin :: {plugin.name} ({plugin.config})")
+        logging.info(f"Plugin :: {plugin.name} - {plugin.config}")
 
         if plugin.config.enabled:
             plugin.logger.info(f"Plugin :: {plugin.name} starting...")

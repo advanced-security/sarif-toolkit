@@ -1,6 +1,6 @@
 import os
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 import logging
 from typing import List, Any
 
@@ -8,9 +8,12 @@ from sariftoolkit.utils.dataclasses import _dataclass_from_dict
 from sariftoolkit.sarif.models import *
 
 
+logger = logging.getLogger("sarif")
+
+
 def loadSarif(path: str):
     path = os.path.abspath(path)
-    print(f"Loading SARIF File: '{path}'")
+    logger.info(f"Loading SARIF File: '{path}'")
     with open(path, "r") as handle:
         sarif_dict = json.load(handle)
 
@@ -30,7 +33,7 @@ def exportSarif(path: str, sarif: SarifModel):
         return data
 
     path = os.path.abspath(path)
-    print(f"Exporting SARIF File: '{path}'")
+    logger.info(f"Exporting SARIF File: '{path}'")
 
     with open(path, "w") as handle:
         json.dump(_exportAsDict(sarif), handle, indent=4)
