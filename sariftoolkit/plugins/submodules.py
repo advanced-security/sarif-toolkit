@@ -188,6 +188,10 @@ class Submodules(Plugin):
         sarif_file: str,
         instance: str = "https://github.com",
     ):
+        if not self.token:
+            self.logger.warning("Failed to find access token, skipping publishing...")
+            return
+
         self.logger.info(f"Publishing SARIF to submodule: {submodule.name}")
         headers = {
             "Accept": "application/vnd.github.v3+json",

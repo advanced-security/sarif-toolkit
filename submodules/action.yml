@@ -11,6 +11,9 @@ inputs:
     description: Working directory
     default: .
 
+  token:
+    description: GitHub Personal Access Token
+    default: ${{ github.token }}
 
 runs:
   using: "composite"
@@ -18,7 +21,9 @@ runs:
     - shell: bash
       run: |
         PYTHONPATH=${{ github.action_path }}/.. && export PYTHONPATH=${{ github.action_path }}/..
+        pip install requests
         python3 ${{ github.action_path }}/../sariftoolkit/__main__.py \
           --enable-submodules \
           --sarif "${{ inputs.sarif }}" \
-          --working "${{ inputs.working }}"
+          --working "${{ inputs.working }}" \
+          --github-token "${{ inputs.token }}"
