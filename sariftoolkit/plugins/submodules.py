@@ -31,16 +31,22 @@ class Submodules(Plugin):
     description: str = "Git Submodules Splitter"
 
     token: str = None
+    cleanup: bool = False
 
     def arguments(self, parser: ArgumentParser):
         # parser.add_argument("--submodules-disable-autoremove", action="store_false")
-        pass
+        parser.add_argument(
+            "--submodules-disable-cleanup",
+            action="store_false",
+            help="Disable clean up newly created SARIF files",
+        )
 
     def run(self, arguments, **kargvs):
         workspace = os.path.abspath(arguments.github_workspace)
         working = os.path.abspath(arguments.working)
 
         self.token = arguments.github_token
+        self.cleanup = arguments.submodules_disable_cleanup
 
         self.logger.debug(f"Git Workspace :: {workspace}")
         self.logger.debug(f"Working :: {working}")
@@ -118,6 +124,10 @@ class Submodules(Plugin):
             exportSarif(submod_file, submodule_sarif)
 
             self.publishSarifFile(submodule, submodule_sarif, sarif_file=submod_file)
+
+            if self.cleanup:
+                self.logger.info(f"Cleaning up SARIF file: {submod_file}")
+                os.remove(submod_file)
 
     def createSubmoduleFileName(self, name: str, sarif_file: str):
         file_name, file_ext = os.path.splitext(sarif_file)
