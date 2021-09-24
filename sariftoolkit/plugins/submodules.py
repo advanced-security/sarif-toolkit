@@ -87,10 +87,16 @@ class Submodules(Plugin):
                     uri = location.physicalLocation.artifactLocation.uri
                     self.logger.debug(f"Location('{uri}')")
 
-                    submodule = self.isFileInSubmodule(submodules, uri)
+                    submodule, new_location_uri = self.isFileInSubmodule(
+                        submodules, uri
+                    )
 
                     if submodule:
                         self.logger.info(f"Result is in Submodule: {submodule.name}")
+
+                        location.physicalLocation.artifactLocation.uri = (
+                            new_location_uri
+                        )
 
                         if not submodule_sarifs[submodule.name].get(result.ruleId):
                             submodule_sarifs[submodule.name][result.ruleId] = []
@@ -137,8 +143,9 @@ class Submodules(Plugin):
     def isFileInSubmodule(self, submodules: List[SubmoduleModel], file: str):
         for sub in submodules:
             if file.startswith(sub.path):
-                return sub
-        return None
+                new_path = file.replace(sub.path, "", 1)
+                return (sub, new_path)
+        return (None, None)
 
     def getSubmodules(self, workspace: str):
         subs = []
