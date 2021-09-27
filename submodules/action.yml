@@ -10,6 +10,10 @@ inputs:
   working:
     description: Working directory
     default: .
+  
+  mode:
+    description: Submodule Mode
+    default: sink
 
   token:
     description: GitHub Personal Access Token
@@ -24,6 +28,7 @@ runs:
         pip install requests
         python3 ${{ github.action_path }}/../sariftoolkit/__main__.py \
           --enable-submodules \
+          --submodules-mode "${{ inputs.mode }}" \
           --sarif "${{ inputs.sarif }}" \
           --working "${{ inputs.working }}" \
           --github-token "${{ inputs.token }}"

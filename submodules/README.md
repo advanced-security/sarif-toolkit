@@ -41,4 +41,10 @@ This Action needs to be placed in between the point of the SARIF file(s) being c
     # Working Directory (sub folder of the working directory)
     # [optional]: Default: '.' (current working directory)
     working: '.'
+    # Mode for how detecting SARIF result locations are located and how they 
+    #  should be reported.
+    # 'sink': Only split on sink being in the submodule
+    # 'path': If any location is in the SARIF file
+    # [optional]: Default: 'sink'
+    mode: 'sink'
 ```
