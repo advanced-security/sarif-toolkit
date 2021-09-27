@@ -1,7 +1,6 @@
 
 .env
-/testing
-
+testing/
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,linux,windows,macos
 ### Linux ###
