@@ -33,6 +33,8 @@ class Submodules(Plugin):
     token: str = None
     cleanup: bool = False
 
+    mode: str = "sink"
+
     def arguments(self, parser: ArgumentParser):
         # parser.add_argument("--submodules-disable-autoremove", action="store_false")
         parser.add_argument(
@@ -83,7 +85,11 @@ class Submodules(Plugin):
             for result in run.results:
                 self.logger.debug(f"Rule('{result.ruleId}')")
 
-                for location in result.locations:
+                # Modes
+                if self.mode == "sink":
+                    #  Get the sink of the query
+                    location = result.locations[len(result.locations) - 1]
+
                     uri = location.physicalLocation.artifactLocation.uri
                     self.logger.debug(f"Location('{uri}')")
 
@@ -103,7 +109,35 @@ class Submodules(Plugin):
 
                         submodule_sarifs[submodule.name][result.ruleId].append(result)
 
+                elif self.mode == "path":
+                    #  If any of the locations in the path are in the submodule
+                    for location in result.locations:
+                        uri = location.physicalLocation.artifactLocation.uri
+                        self.logger.debug(f"Location('{uri}')")
+
+                        submodule, new_location_uri = self.isFileInSubmodule(
+                            submodules, uri
+                        )
+
+                        if submodule:
+                            self.logger.info(
+                                f"Result is in Submodule: {submodule.name}"
+                            )
+
+                            location.physicalLocation.artifactLocation.uri = (
+                                new_location_uri
+                            )
+
+                            if not submodule_sarifs[submodule.name].get(result.ruleId):
+                                submodule_sarifs[submodule.name][result.ruleId] = []
+
+                            submodule_sarifs[submodule.name][result.ruleId].append(
+                                result
+                            )
+
                         #  TODO: Pop result if --submodules-disable-autoremove is true
+                else:
+                    raise Exception(f"Unknown Mode: {self.mode}")
 
         for name, submodule_locations in submodule_sarifs.items():
             if not submodule_locations:
