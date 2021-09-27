@@ -42,6 +42,11 @@ class Submodules(Plugin):
             action="store_false",
             help="Disable clean up newly created SARIF files",
         )
+        parser.add_argument(
+            "--submodules-mode",
+            default="sink",
+            help="Submodule plugin mode ('sink' or 'path')",
+        )
 
     def run(self, arguments, **kargvs):
         workspace = os.path.abspath(arguments.github_workspace)
@@ -49,6 +54,7 @@ class Submodules(Plugin):
 
         self.token = arguments.github_token
         self.cleanup = arguments.submodules_disable_cleanup
+        self.mode = arguments.submodules_mode
 
         self.logger.debug(f"Git Workspace :: {workspace}")
         self.logger.debug(f"Working :: {working}")
