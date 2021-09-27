@@ -2,11 +2,11 @@
 
 SARIF Submodules Tool/Action.
 
-This tools allows users to split up SARIF files that use submodules for the SARIF files to be pushed to the appropriate repositories.
+This tools allows users to split up SARIF files that use submodules into multiple SARIF files that are then published to there appropriate repositories.
 
 ## Example / Use Case
 
-Your repository has a submodule called "core" which is pulled into your CI for building or publishing code.
+Your repository has a submodule called "core" which is either a git submodule or pulled into your CI at runtime to build the full code base.
 Your security scanning tool takes all the code present in the repository or at build time and discovers security issues that end up in "core".
 
 Example: `SQL Injection sink in "core"`
