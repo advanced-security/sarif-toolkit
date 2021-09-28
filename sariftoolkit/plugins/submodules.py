@@ -92,7 +92,8 @@ class Submodules(Plugin):
             self.logger.info(f"Processing tool: {tool.name} ({tool.semanticVersion})")
 
             for result in run.results:
-                self.logger.debug(f"Rule('{result.ruleId}')")
+                if result.ruleId:
+                    self.logger.debug(f"Rule('{result.ruleId}')")
 
                 # Modes
                 if self.mode == "sink":
