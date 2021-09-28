@@ -12,7 +12,7 @@ import requests
 
 from sariftoolkit.plugin import Plugin
 from sariftoolkit.sarif.sarif import exportSarif
-from sariftoolkit.sarif.models import SarifModel
+from sariftoolkit.sarif.models import SarifModel, RunAutomationDetails
 
 
 @dataclass
@@ -34,6 +34,7 @@ class Submodules(Plugin):
     cleanup: bool = False
 
     mode: str = "sink"
+    repository: str = None
 
     def arguments(self, parser: ArgumentParser):
         # parser.add_argument("--submodules-disable-autoremove", action="store_false")
@@ -55,6 +56,8 @@ class Submodules(Plugin):
         self.token = arguments.github_token
         self.cleanup = arguments.submodules_disable_cleanup
         self.mode = arguments.submodules_mode
+
+        self.repository = arguments.github_repository
 
         self.logger.debug(f"Git Workspace :: {workspace}")
         self.logger.debug(f"Working :: {working}")
@@ -165,6 +168,12 @@ class Submodules(Plugin):
                     )
 
                     run.results.extend(results)
+
+                #  Set Configuration
+                # https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10540925
+                run.automationDetails = RunAutomationDetails(
+                    f"{run.tool.driver.name}/{self.repository}"
+                )
 
             submod_file = self.createSubmoduleFileName(name, sarif_file)
             exportSarif(submod_file, submodule_sarif)

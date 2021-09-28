@@ -23,6 +23,11 @@ parser_github.add_argument(
     help="Root GitHub Directory (default: $GITHUB_WORKSPACE)",
 )
 parser_github.add_argument(
+    "--github-repository",
+    default=os.environ.get("GITHUB_REPOSITORY"),
+    help="GitHub Repository (default: $GITHUB_REPOSITORY)",
+)
+parser_github.add_argument(
     "--github-token",
     default=os.environ.get("GITHUB_TOKEN"),
     help="GitHub PAT (default: $GITHUB_TOKEN)",

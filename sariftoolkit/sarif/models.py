@@ -288,6 +288,11 @@ class PropertiesModel(BaseModel):
 
 
 @dataclass
+class RunAutomationDetails(BaseModel):
+    id: str = None
+
+
+@dataclass
 class RunsModel(BaseModel):
     tool: ToolModel = None
     invocations: List[InvocationsModel] = field(default_factory=list)
@@ -295,6 +300,7 @@ class RunsModel(BaseModel):
     results: List[ResultsModel] = field(default_factory=list)
     columnKind: str = None
     properties: PropertiesModel = None
+    automationDetails: RunAutomationDetails = None
 
 
 @dataclass
