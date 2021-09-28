@@ -26,5 +26,6 @@ def _dataclass_from_dict(klass, dikt):
         elif isinstance(dikt, (tuple, list)):
             return [_dataclass_from_dict(klass.__args__[0], f) for f in dikt]
 
+        logging.warning(f"DataClass loading: {klass}")
         logging.warning(f"AttributeError: {err}")
         return dikt
