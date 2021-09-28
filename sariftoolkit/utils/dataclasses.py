@@ -21,6 +21,7 @@ def _dataclass_from_dict(klass, dikt):
         raise err
 
     except AttributeError as err:
+        logging.warning(f"AttributeError: {err}")
         if isinstance(dikt, (tuple, list)):
             return [_dataclass_from_dict(klass.__args__[0], f) for f in dikt]
         return dikt
