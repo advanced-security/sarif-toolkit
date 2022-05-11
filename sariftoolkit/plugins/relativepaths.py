@@ -75,7 +75,9 @@ class RelativePaths(Plugin):
         for run in sarif.get("runs", []):
             tool = run.get("tool", {}).get("driver", {})
             self.logger.info(
-                "Processing tool: {name} ({semanticVersion})".format(**tool)
+                "Processing tool: {name} ({version})".format(
+                    name=tool.get("name"), version=tool.get("semanticVersion", "NA")
+                )
             )
 
             new_results = []
