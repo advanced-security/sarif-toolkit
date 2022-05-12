@@ -64,6 +64,21 @@ class RelativePaths(Plugin):
         with open(path, "w") as handle:
             json.dump(data, handle, indent=2)
 
+    def updateLocation(self, location, root) -> dict:
+        uri = (
+            location.get("physicalLocation", {}).get("artifactLocation", {}).get("uri")
+        )
+
+        new_location = location.copy()
+
+        if uri:
+            new_uri = f"{root}/{uri}"
+
+            self.logger.debug(f"Update: {uri} => {new_uri}")
+
+            new_location["physicalLocation"]["artifactLocation"]["uri"] = new_uri
+        return new_location
+
     def processSarifFile(self, root: str, path: str):
         self.logger.info(f"Processing SARIF File: {path}")
         if not os.path.exists(path):
@@ -85,30 +100,30 @@ class RelativePaths(Plugin):
             for result in run.get("results", []):
                 self.logger.debug(f"Rule({result.get('ruleId')})")
 
+                # Locations
                 new_locations = []
-
                 for location in result.get("locations", []):
                     #  https://github.com/microsoft/sarif-tutorials/blob/main/docs/2-Basics.md#-linking-results-to-artifacts
-                    uri = (
-                        location.get("physicalLocation", {})
-                        .get("artifactLocation", {})
-                        .get("uri")
-                    )
-
-                    if uri:
-                        new_uri = f"{root}/{uri}"
-
-                        self.logger.debug(f"Update: {uri} => {new_uri}")
-
-                        location["physicalLocation"]["artifactLocation"][
-                            "uri"
-                        ] = new_uri
-
-                        new_locations.append(location)
+                    new_location = self.updateLocation(location, root)
+                    new_locations.append(new_location)
 
                 if new_locations:
                     result["locations"] = new_locations
                     new_results.append(result)
+
+                # Code Flows
+                for flow in result.get("codeFlows", []):
+                    for flow_step in flow.get("threadFlows", []):
+                        new_locations = []
+                        for location in flow_step.get("locations", []):
+                            new_location = self.updateLocation(
+                                location.get("location"), root
+                            )
+
+                            new_locations.append({"location": new_location})
+
+                        if new_locations:
+                            flow_step["locations"] = new_locations
 
             if new_results:
                 run["results"] = new_results
