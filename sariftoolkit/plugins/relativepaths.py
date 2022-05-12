@@ -74,7 +74,7 @@ class RelativePaths(Plugin):
         if uri:
             new_uri = f"{root}/{uri}"
 
-            self.logger.info(f"Update: {uri} => {new_uri}")
+            self.logger.debug(f"Update: {uri} => {new_uri}")
 
             new_location["physicalLocation"]["artifactLocation"]["uri"] = new_uri
         return new_location
@@ -124,7 +124,6 @@ class RelativePaths(Plugin):
 
                         if new_locations:
                             flow_step["locations"] = new_locations
-                        print(flow_step["locations"])
 
             if new_results:
                 run["results"] = new_results
