@@ -869,13 +869,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/ql/examples/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/ql/examples/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/ql/examples/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/ql/examples/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -886,13 +886,13 @@
             "name": "codeql-java-upgrades",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -904,13 +904,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/src/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/src/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/src/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/src/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -922,13 +922,13 @@
             "semanticVersion": "0.0.0",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/bin/codeql/legacy-upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/bin/codeql/legacy-upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/bin/codeql/legacy-upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/bin/codeql/legacy-upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -940,13 +940,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/ql/test/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/ql/test/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/ql/test/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/ql/test/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -958,13 +958,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/ql/test/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/ql/test/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/ql/test/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/ql/test/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -972,17 +972,17 @@
             ]
           },
           {
-            "name": "geekmasher-queries-java",
+            "name": "advanced-security-queries-java",
             "semanticVersion": "0.0.0+0c9380b448522c8929302c8278ddab409a841f41",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/java/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/java/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/java/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/java/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -994,13 +994,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/ql/test/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/ql/test/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/ql/test/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/ql/test/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1012,13 +1012,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/test/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/test/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/test/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/test/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1030,13 +1030,13 @@
             "semanticVersion": "0.0.0+65e9262b414cc865c8f26f71bf2218bcf992cc97",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/config/legacy-support/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/config/legacy-support/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/config/legacy-support/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/config/legacy-support/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1048,13 +1048,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/suite-helpers/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/suite-helpers/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/suite-helpers/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/suite-helpers/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1065,13 +1065,13 @@
             "name": "codeql-go-upgrades",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1083,13 +1083,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/cpp/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/cpp/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/cpp/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/cpp/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1101,13 +1101,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/ql/test/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/ql/test/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/ql/test/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/ql/test/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1115,17 +1115,17 @@
             ]
           },
           {
-            "name": "geekmasher-queries-python",
+            "name": "advanced-security-queries-python",
             "semanticVersion": "0.1.0+0c9380b448522c8929302c8278ddab409a841f41",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/python/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/python/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/python/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/python/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1137,13 +1137,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/python/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/python/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/python/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/python/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1155,13 +1155,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/test/query-tests/Security/CWE/CWE-190/semmle/tainted/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/test/query-tests/Security/CWE/CWE-190/semmle/tainted/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/test/query-tests/Security/CWE/CWE-190/semmle/tainted/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/test/query-tests/Security/CWE/CWE-190/semmle/tainted/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1169,17 +1169,17 @@
             ]
           },
           {
-            "name": "geekmasher-queries-javascript",
+            "name": "advanced-security-queries-javascript",
             "semanticVersion": "0.0.0+0c9380b448522c8929302c8278ddab409a841f41",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/javascript/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/javascript/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/javascript/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/javascript/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1191,13 +1191,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/ql/examples/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/ql/examples/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/ql/examples/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/ql/examples/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1209,13 +1209,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/java/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/java/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/java/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/java/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1226,13 +1226,13 @@
             "name": "codeql-python-upgrades",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1243,13 +1243,13 @@
             "name": "codeql-cpp-upgrades",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1261,13 +1261,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/ql/examples/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/ql/examples/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/ql/examples/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/ql/examples/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1279,13 +1279,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/ql/src/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/ql/src/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/ql/src/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/ql/src/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1297,13 +1297,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/examples/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/examples/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/cpp/ql/examples/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/cpp/ql/examples/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1315,13 +1315,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/csharp/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/csharp/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/csharp/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/csharp/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1333,13 +1333,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/ql/src/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/ql/src/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/java/ql/src/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/java/ql/src/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1351,13 +1351,13 @@
             "semanticVersion": "0.0.0+65e9262b414cc865c8f26f71bf2218bcf992cc97",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/examples/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/examples/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/examples/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/examples/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1368,13 +1368,13 @@
             "name": "codeql-javascript-upgrades",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1386,13 +1386,13 @@
             "semanticVersion": "0.0.0+65e9262b414cc865c8f26f71bf2218bcf992cc97",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/src/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/src/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/src/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/src/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1404,13 +1404,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/javascript/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/javascript/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/misc/legacy-support/javascript/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/misc/legacy-support/javascript/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1418,17 +1418,17 @@
             ]
           },
           {
-            "name": "geekmasher-queries-go",
+            "name": "advanced-security-queries-go",
             "semanticVersion": "0.0.0+0c9380b448522c8929302c8278ddab409a841f41",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/golang/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/golang/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/golang/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/golang/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1436,17 +1436,17 @@
             ]
           },
           {
-            "name": "geekmasher-queries-csharp",
+            "name": "advanced-security-queries-csharp",
             "semanticVersion": "0.0.0+0c9380b448522c8929302c8278ddab409a841f41",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/csharp/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/csharp/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/csharp/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/csharp/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1458,13 +1458,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/ql/examples/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/ql/examples/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/python/ql/examples/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/python/ql/examples/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1476,13 +1476,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/ql/src/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/ql/src/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/ql/src/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/ql/src/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1493,13 +1493,13 @@
             "name": "codeql-csharp-upgrades",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/upgrades/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/upgrades/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/csharp/upgrades/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/csharp/upgrades/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1511,13 +1511,13 @@
             "semanticVersion": "0.0.0+65e9262b414cc865c8f26f71bf2218bcf992cc97",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/test/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/test/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql-go/ql/test/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql-go/ql/test/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1529,13 +1529,13 @@
             "semanticVersion": "0.0.0+5ba934728196ae0e8dc191db3ca9b9dbf8f35ed1",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/ql/src/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/ql/src/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/codeql/javascript/ql/src/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/codeql/javascript/ql/src/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }
@@ -1543,17 +1543,17 @@
             ]
           },
           {
-            "name": "geekmasher-queries-cpp",
+            "name": "advanced-security-queries-cpp",
             "semanticVersion": "0.0.0+0c9380b448522c8929302c8278ddab409a841f41",
             "locations": [
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/cpp/",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/cpp/",
                 "description": {
                   "text": "The QL pack root directory."
                 }
               },
               {
-                "uri": "file:///Users/geekmasher/Documents/development/security-queries/cpp/qlpack.yml",
+                "uri": "file:///Users/advanced-security/Documents/development/security-queries/cpp/qlpack.yml",
                 "description": {
                   "text": "The QL pack definition file."
                 }

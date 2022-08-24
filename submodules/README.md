@@ -25,7 +25,7 @@ This Action needs to be placed in between the point of the SARIF file(s) being c
 
 ```yaml
 # ... SARIF file has been created
-- uses: GeekMasher/sarif-toolkit/submodules@main
+- uses: advanced-security/sarif-toolkit/submodules@main
 # ... SARIF file is being uploaded
 ```
 
@@ -33,7 +33,7 @@ This Action needs to be placed in between the point of the SARIF file(s) being c
 
 ```yaml
 # 
-- uses: GeekMasher/sarif-toolkit/submodules@main
+- uses: advanced-security/sarif-toolkit/submodules@main
   with:
     # SARIF File / Directory location
     # [optional]: Default: '../results'
