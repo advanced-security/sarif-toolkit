@@ -132,10 +132,10 @@ class Subfolders(Plugin):
                                 new_location_uri
                             )
 
-                            if not subfolder_sarifs[subfolder.name].get(result.ruleId):
-                                subfolder_sarifs[subfolder.name][result.ruleId] = []
+                            if not subfolder_sarifs[subfolder['name']].get(result.ruleId):
+                                subfolder_sarifs[subfolder['name']][result.ruleId] = []
 
-                            subfolder_sarifs[subfolder.name][result.ruleId].append(
+                            subfolder_sarifs[subfolder['name']][result.ruleId].append(
                                 result
                             )
 
