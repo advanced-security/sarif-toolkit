@@ -59,9 +59,10 @@ class Subfolders(Plugin):
         working = os.path.abspath(arguments.working)
 
         self.token = arguments.github_token
-        self.cleanup = arguments.submodules_disable_cleanup
-        self.mode = arguments.submodules_mode
+        self.cleanup = arguments.subfolder_disable_cleanup
+        self.mode = arguments.subfolder_mode
         self.config_file = arguments.config_file
+        self.sarif_path = arguments.sarif
 
         #  Load the configuration file
         with open(self.config_file) as f:
@@ -72,7 +73,8 @@ class Subfolders(Plugin):
         self.logger.info(f"config :: {config}")
 
         
-        for sarif, sarif_file in self.loadSarif("/Users/adrienpessu/workspaces/advanced-security/sarif-toolkit/examples/sarifs/python-testing-queries.sarif"):
+        for sarif, sarif_file in self.loadSarif(self.sarif_path):
+            self.logger.info(f"sarif :: {sarif}")
             self.processSarif(config, sarif, sarif_file)
 
     def processSarif(
@@ -83,9 +85,9 @@ class Subfolders(Plugin):
     ):
         self.logger.info(f"Processing SARIF file: {sarif_file}")
 
-        submodule_sarifs = {}
+        subfolder_sarifs = {}
         for sub in subfolder_structured:
-            submodule_sarifs[sub["url"]] = {}
+            subfolder_sarifs[sub["name"]] = {}
 
         for run in sarif.runs:
             print("-----------SARIF -----------")
@@ -101,85 +103,79 @@ class Subfolders(Plugin):
                     location = result.locations[len(result.locations) - 1]
 
                     uri = location.physicalLocation.artifactLocation.uri
-                    self.logger.debug(f"Location('{uri}')")
 
-                    submodule, new_location_uri = self.isFileInSubfolder(
+                    subfolder, new_location_uri = self.isFileInSubfolder(
                         subfolder_structured, uri
                     )
 
-                    if submodule:
-                        self.logger.info(f"Result is in Submodule: {submodule.name}")
-
+                    if subfolder:
                         location.physicalLocation.artifactLocation.uri = (
                             new_location_uri
                         )
+                        
+                        if not subfolder_sarifs[subfolder['name']].get(result.ruleId):
+                            subfolder_sarifs[subfolder['name']][result.ruleId] = []
 
-                        if not submodule_sarifs[submodule.name].get(result.ruleId):
-                            submodule_sarifs[submodule.name][result.ruleId] = []
-
-                        submodule_sarifs[submodule.name][result.ruleId].append(result)
+                        subfolder_sarifs[subfolder['name']][result.ruleId].append(result)
 
                 elif self.mode == "path":
-                    #  If any of the locations in the path are in the submodule
+                    #  If any of the locations in the path are in the subfolder
                     for location in result.locations:
                         uri = location.physicalLocation.artifactLocation.uri
                         self.logger.debug(f"Location('{uri}')")
 
-                        submodule, new_location_uri = self.isFileInSubfolder(
+                        subfolder, new_location_uri = self.isFileInSubfolder(
                             subfolder_structured, uri
                         )
 
-                        if submodule:
-                            self.logger.info(
-                                f"Result is in Submodule: {submodule.name}"
-                            )
-
+                        if subfolder:
                             location.physicalLocation.artifactLocation.uri = (
                                 new_location_uri
                             )
 
-                            if not submodule_sarifs[submodule.name].get(result.ruleId):
-                                submodule_sarifs[submodule.name][result.ruleId] = []
+                            if not subfolder_sarifs[subfolder.name].get(result.ruleId):
+                                subfolder_sarifs[subfolder.name][result.ruleId] = []
 
-                            submodule_sarifs[submodule.name][result.ruleId].append(
+                            subfolder_sarifs[subfolder.name][result.ruleId].append(
                                 result
                             )
 
-                        #  TODO: Pop result if --submodules-disable-autoremove is true
+                        #  TODO: Pop result if --subfolders-disable-autoremove is true
                 else:
                     raise Exception(f"Unknown Mode: {self.mode}")
 
-        for name, submodule_locations in submodule_sarifs.items():
-            if not submodule_locations:
+        for name, subfolder_locations in subfolder_sarifs.items():
+            if not subfolder_locations:
                 continue
 
-            submodule = next((x for x in submodules if x.name == name), None)
+            self.logger.info(f"Subfolder: {name} || {subfolder}")
+            subfolder = next((x for x in subfolder_structured if x['name'] == name), None)
 
             self.logger.info(f"Creating SARIF file for: {name}")
             # Create a deep copy of the SARIF file
-            submodule_sarif: SarifModel = copy.copy(sarif)
+            subfolder_sarif: SarifModel = copy.copy(sarif)
 
-            for run in submodule_sarif.runs:
+            for run in subfolder_sarif.runs:
                 #  Clear the existing results
                 run.results.clear()
 
-                for rule_id, results in submodule_locations.items():
+                for rule_id, results in subfolder_locations.items():
                     self.logger.debug(
-                        f"New Submodule Result :: {rule_id} ({len(results)})"
+                        f"New subfolder Result :: {rule_id} ({len(results)})"
                     )
 
                     run.results.extend(results)
 
-            submod_file = self.createSubmoduleFileName(name, sarif_file)
-            exportSarif(submod_file, submodule_sarif)
+            submod_file = self.createsubfolderFileName(name, sarif_file)
+            exportSarif(submod_file, subfolder_sarif)
 
-            self.publishSarifFile(submodule, submodule_sarif, sarif_file=submod_file)
+            self.publishSarifFile(subfolder, subfolder_sarif, sarif_file=submod_file)
 
             if self.cleanup:
                 self.logger.info(f"Cleaning up SARIF file: {submod_file}")
                 os.remove(submod_file)
 
-    def createSubmoduleFileName(self, name: str, sarif_file: str):
+    def createsubfolderFileName(self, name: str, sarif_file: str):
         file_name, file_ext = os.path.splitext(sarif_file)
 
         return f"{file_name}-{name}{file_ext}"
@@ -187,15 +183,14 @@ class Subfolders(Plugin):
     def isFileInSubfolder(self, structure: List[SubfolderModel], file: str):
         for sub in structure:
             path = sub["path"]
-            self.logger.info(f"isFileInSubfolder :: {file} :: {path}")
             if file.startswith(sub["path"]):
-                new_path = file.replace(sub.path + "/", "", 1)
+                new_path = file.replace(path + "/", "", 1)
                 return (sub, new_path)
         return (None, None)
 
-    def getSubmodules(self, workspace: str):
+    def getsubfolders(self, workspace: str):
         subs = []
-        command = ["git", "submodule", "status", "--recursive"]
+        command = ["git", "subfolder", "status", "--recursive"]
         result = subprocess.run(command, stdout=subprocess.PIPE, cwd=workspace)
         data = result.stdout.decode().split("\n")
 
@@ -217,7 +212,7 @@ class Subfolders(Plugin):
 
             giturl = giturl.replace(".git", "")
 
-            submodule = SubfolderModel(
+            subfolder = SubfolderModel(
                 name=name,
                 url=giturl,
                 path=path,
@@ -225,7 +220,7 @@ class Subfolders(Plugin):
                 commit=sha,
             )
 
-            subs.append(submodule)
+            subs.append(subfolder)
 
         return subs
 
@@ -246,7 +241,7 @@ class Subfolders(Plugin):
 
     def publishSarifFile(
         self,
-        submodule: SubfolderModel,
+        subfolder: SubfolderModel,
         sarif: SarifModel,
         sarif_file: str,
         instance: str = "https://github.com",
@@ -255,12 +250,12 @@ class Subfolders(Plugin):
             self.logger.warning("Failed to find access token, skipping publishing...")
             return
 
-        self.logger.info(f"Publishing SARIF to submodule: {submodule.name}")
+        self.logger.info(f"Publishing SARIF to subfolder: {subfolder.name}")
         headers = {
             "Accept": "application/vnd.github.v3+json",
             "Authorization": "token " + self.token,
         }
-        owner, repo = submodule.url.split("/")
+        owner, repo = subfolder.url.split("/")
         if instance == "https://github.com":
             api_instance = "https://api.github.com"
         else:
@@ -270,12 +265,12 @@ class Subfolders(Plugin):
         self.logger.debug(f"Publishing SARIF file to endpoint: {url}")
 
         data = {
-            "commit_sha": submodule.commit,
-            "ref": submodule.branch,
+            "commit_sha": subfolder.commit,
+            "ref": subfolder.branch,
             "sarif": self.packageSarif(sarif_file),
             "tool_name": sarif.runs[0].tool.driver.name,
         }
 
         res = requests.post(url, json=data, headers=headers)
 
-        self.logger.info("Uploaded SARIF file to submodule")
+        self.logger.info("Uploaded SARIF file to subfolder")

@@ -1,8 +1,8 @@
--
+- name: core
   url: https://github.com/ORG_REPO
   path: src/core
   token: github_pat_
--
+- name: lib
   url: https://github.com/ORG_REPO@
   path: src/lib
   token: github_pat_
