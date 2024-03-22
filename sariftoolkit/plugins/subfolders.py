@@ -74,7 +74,6 @@ class Subfolders(Plugin):
 
         
         for sarif, sarif_file in self.loadSarif(self.sarif_path):
-            self.logger.info(f"sarif :: {sarif}")
             self.processSarif(config, sarif, sarif_file)
 
     def processSarif(
