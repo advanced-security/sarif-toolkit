@@ -2,7 +2,11 @@
   url: https://github.com/ORG_REPO
   path: src/core
   token: github_pat_
+  branch: main
+  commit: xxx
 - name: lib
   url: https://github.com/ORG_REPO@
   path: src/lib
   token: github_pat_
+  branch: main
+  commit: xxx

@@ -86,7 +86,7 @@ class Subfolders(Plugin):
 
         subfolder_sarifs = {}
         for sub in subfolder_structured:
-            subfolder_sarifs[sub["name"]] = {}
+            subfolder_sarifs[sub["name"]] = sub
 
         for run in sarif.runs:
             print("-----------SARIF -----------")
@@ -168,7 +168,7 @@ class Subfolders(Plugin):
             submod_file = self.createsubfolderFileName(name, sarif_file)
             exportSarif(submod_file, subfolder_sarif)
 
-            self.publishSarifFile(subfolder, subfolder_sarif, sarif_file=submod_file)
+            self.publishSarifFile(subfolder_sarifs[sub["name"]], subfolder_sarif, sarif_file=submod_file)
 
             if self.cleanup:
                 self.logger.info(f"Cleaning up SARIF file: {submod_file}")
@@ -245,16 +245,20 @@ class Subfolders(Plugin):
         sarif_file: str,
         instance: str = "https://github.com",
     ):
-        if not self.token:
+        self.logger.warning(f"Config: {subfolder}")
+        if not subfolder["token"]:
             self.logger.warning("Failed to find access token, skipping publishing...")
             return
 
-        self.logger.info(f"Publishing SARIF to subfolder: {subfolder.name}")
+        name = subfolder["name"]
+        self.logger.info(f"Publishing SARIF to subfolder: {name}")
         headers = {
             "Accept": "application/vnd.github.v3+json",
-            "Authorization": "token " + self.token,
+            "Authorization": "token " + subfolder["token"],
         }
-        owner, repo = subfolder.url.split("/")
+        url_split = subfolder["url"].split("/")
+        owner = url_split.pop(0)
+        repo = url_split.pop(1)
         if instance == "https://github.com":
             api_instance = "https://api.github.com"
         else:
@@ -263,13 +267,17 @@ class Subfolders(Plugin):
         url = f"{api_instance}/repos/{owner}/{repo}/code-scanning/sarifs"
         self.logger.debug(f"Publishing SARIF file to endpoint: {url}")
 
+        if not 'branch' in subfolder:
+            subfolder["branch"] = "main"
+
         data = {
-            "commit_sha": subfolder.commit,
-            "ref": subfolder.branch,
+            "commit_sha": subfolder["url"],
+            "ref": subfolder["branch"],
             "sarif": self.packageSarif(sarif_file),
             "tool_name": sarif.runs[0].tool.driver.name,
         }
 
         res = requests.post(url, json=data, headers=headers)
-
+        
+        self.logger.debug(f"Response: {res.status_code} - {res.text}")
         self.logger.info("Uploaded SARIF file to subfolder")

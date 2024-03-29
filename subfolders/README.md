@@ -46,5 +46,24 @@ This Action needs to be placed in between the point of the SARIF file(s) being c
     # 'path': If any location is in the SARIF file
     # [optional]: Default: 'sink'
     mode: 'sink'
+    # Configuration file location
+    # configuration file is a YAML file that contains the configuration for the
+    #  subfolders tool.
+    # Here is an example configuration file:
+    #  ```yaml
+    #        - name: core
+    #       url: https://github.com/ORG_REPO
+    #       path: src/core
+    #       token: github_pat_
+    #       branch: main
+    #       commit: xxx
+    #     - name: lib
+    #       url: https://github.com/ORG_REPO@
+    #       path: src/lib
+    #       token: github_pat_
+    #       branch: main
+    #       commit: xxx  
+    #     ```
+
     config-file: './config.yml'
 ```
