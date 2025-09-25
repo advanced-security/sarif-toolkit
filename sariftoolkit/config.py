@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -10,13 +10,13 @@ class PluginConfig:
 
 @dataclass
 class Plugins:
-    relativepaths: PluginConfig = PluginConfig(
+    relativepaths: PluginConfig = field(default_factory=lambda: PluginConfig(
         "RelativePaths", "sariftoolkit.plugins.relativepaths"
-    )
+    ))
 
-    submodules: PluginConfig = PluginConfig(
+    submodules: PluginConfig = field(default_factory=lambda: PluginConfig(
         "Submodules", "sariftoolkit.plugins.submodules"
-    )
+    ))
 
 
 @dataclass
@@ -24,7 +24,7 @@ class Config:
     name: str = "Default Configuration"
     version: str = "0.0.0"
 
-    plugins: Plugins = Plugins()
+    plugins: Plugins = field(default_factory=Plugins)
 
 
 def load(path: str) -> Config:
