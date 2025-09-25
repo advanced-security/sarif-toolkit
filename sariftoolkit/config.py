@@ -18,6 +18,10 @@ class Plugins:
         "Submodules", "sariftoolkit.plugins.submodules"
     ))
 
+    splitter: PluginConfig = field(default_factory=lambda: PluginConfig(
+        "Splitter", "sariftoolkit.plugins.splitter"
+    ))
+
 
 @dataclass
 class Config:
