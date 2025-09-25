@@ -1,13 +1,14 @@
 import os
 import copy
 import fnmatch
+import json
 from typing import List, Dict, Any
 from dataclasses import dataclass, field
 from argparse import ArgumentParser
 
 from sariftoolkit.plugin import Plugin
 from sariftoolkit.sarif.sarif import exportSarif
-from sariftoolkit.sarif.models import SarifModel, RunsModel
+from sariftoolkit.sarif.models import SarifModel, RunsModel, AutomationDetailsModel
 
 
 @dataclass
@@ -112,7 +113,6 @@ class Splitter(Plugin):
     
     def _load_path_config(self, config_path: str):
         """Load path configuration from JSON file"""
-        import json
         try:
             with open(config_path, 'r') as f:
                 config = json.load(f)
@@ -120,13 +120,12 @@ class Splitter(Plugin):
                     PathSplitRule(name=rule['name'], patterns=rule['patterns'])
                     for rule in config.get('path_rules', [])
                 ]
-        except Exception as e:
+        except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
             self.logger.error(f"Failed to load path config: {e}")
             self._set_default_path_rules()
     
     def _load_severity_config(self, config_path: str):
         """Load severity configuration from JSON file"""
-        import json
         try:
             with open(config_path, 'r') as f:
                 config = json.load(f)
@@ -134,7 +133,7 @@ class Splitter(Plugin):
                     SeveritySplitRule(name=rule['name'], severities=rule['severities'])
                     for rule in config.get('severity_rules', [])
                 ]
-        except Exception as e:
+        except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
             self.logger.error(f"Failed to load severity config: {e}")
             self._set_default_severity_rules()
     
@@ -225,7 +224,7 @@ class Splitter(Plugin):
                                 security_severity = getattr(rule.properties, attr_name, None)
                                 if security_severity:
                                     break
-                            except:
+                            except AttributeError:
                                 pass
                     
                     if security_severity:
@@ -317,8 +316,6 @@ class Splitter(Plugin):
             new_sarif.runs[0].results = bucket['results']
             
             # Add runAutomationDetails for GitHub Advanced Security
-            from sariftoolkit.sarif.models import AutomationDetailsModel
-            
             if not new_sarif.runs[0].automationDetails:
                 new_sarif.runs[0].automationDetails = AutomationDetailsModel(id=category)
             else:
