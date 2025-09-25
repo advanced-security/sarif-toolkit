@@ -73,6 +73,10 @@ class Splitter(Plugin):
             self.logger.error("At least one splitting method must be enabled (--split-by-path or --split-by-severity)")
             return
         
+        if self.split_by_path and self.split_by_severity:
+            self.logger.error("Only one splitting method can be enabled at a time. Choose either --split-by-path or --split-by-severity")
+            return
+        
         # Load configuration
         if arguments.path_config:
             self._load_path_config(arguments.path_config)
@@ -87,14 +91,29 @@ class Splitter(Plugin):
         # Load SARIF files
         sarif_files = self.loadSarif(arguments.sarif)
         
+        # Summary tracking
+        summary_data = []
+        
         for sarif_model, sarif_file_path in sarif_files:
             self.logger.info(f"Processing SARIF file: {sarif_file_path}")
             
-            if self.split_by_path:
-                self._split_by_path_patterns(sarif_model, sarif_file_path, arguments)
+            # Count original alerts
+            original_alert_count = sum(len(run.results) for run in sarif_model.runs)
             
-            if self.split_by_severity:
-                self._split_by_severity_levels(sarif_model, sarif_file_path, arguments)
+            if self.split_by_path:
+                split_results = self._split_by_path_patterns(sarif_model, sarif_file_path, arguments)
+            elif self.split_by_severity:
+                split_results = self._split_by_severity_levels(sarif_model, sarif_file_path, arguments)
+            
+            # Add to summary
+            summary_data.append({
+                'original_file': sarif_file_path,
+                'original_alerts': original_alert_count,
+                'split_results': split_results
+            })
+        
+        # Print summary table
+        self._print_summary_table(summary_data)
     
     def _set_default_path_rules(self):
         """Set default path-based splitting rules"""
@@ -107,7 +126,9 @@ class Splitter(Plugin):
         """Set default severity-based splitting rules"""
         self.severity_rules = [
             SeveritySplitRule(name="Critical", severities=["critical"]),
-            SeveritySplitRule(name="High-Medium", severities=["high", "medium"]),
+            SeveritySplitRule(name="High", severities=["high"]),
+            SeveritySplitRule(name="Medium", severities=["medium"]),
+            SeveritySplitRule(name="Low", severities=["low"]),
             SeveritySplitRule(name="Others", severities=["*"])  # Catch-all for remaining
         ]
     
@@ -195,7 +216,7 @@ class Splitter(Plugin):
             path_buckets[fallback_category]['run'].results = []
         
         # Create and export split SARIF files
-        self._export_split_files(path_buckets, sarif, sarif_file_path, "path", arguments)
+        return self._export_split_files(path_buckets, sarif, sarif_file_path, "path", arguments)
     
     def _split_by_severity_levels(self, sarif: SarifModel, sarif_file_path: str, arguments):
         """Split SARIF file by security severity levels"""
@@ -295,13 +316,14 @@ class Splitter(Plugin):
                 severity_buckets[category_name]['run'].results = []
         
         # Create and export split SARIF files
-        self._export_split_files(severity_buckets, sarif, sarif_file_path, "severity", arguments)
+        return self._export_split_files(severity_buckets, sarif, sarif_file_path, "severity", arguments)
     
     def _export_split_files(self, buckets: Dict[str, Dict], original_sarif: SarifModel, 
                            original_file_path: str, split_type: str, arguments):
         """Export split SARIF files with proper runAutomationDetails"""
         
         base_name, ext = os.path.splitext(original_file_path)
+        split_results = []
         
         for category, bucket in buckets.items():
             if not bucket['results']:
@@ -338,3 +360,49 @@ class Splitter(Plugin):
             # Export the split SARIF file
             exportSarif(output_file, new_sarif)
             self.logger.info(f"Created split SARIF: {output_file} with {len(bucket['results'])} results for category: {category}")
+            
+            # Track for summary
+            split_results.append({
+                'file': os.path.basename(output_file),
+                'alerts': len(bucket['results']),
+                'category': category
+            })
+        
+        return split_results
+    
+    def _print_summary_table(self, summary_data):
+        """Print a summary table of before/after view"""
+        if not summary_data:
+            return
+            
+        print("\n" + "="*80)
+        print("SARIF SPLITTING SUMMARY")
+        print("="*80)
+        print(f"{'Original SARIF File':<30} {'Original Alerts':<15} {'Split File':<35} {'Category':<30} {'Alerts':<10}")
+        print("-"*80)
+        
+        for data in summary_data:
+            original_file = os.path.basename(data['original_file'])
+            original_alerts = data['original_alerts']
+            
+            if data['split_results']:
+                # Print first split result on same line as original
+                first_result = data['split_results'][0]
+                print(f"{original_file:<30} {original_alerts:<15} {first_result['file']:<35} {first_result['category']:<30} {first_result['alerts']:<10}")
+                
+                # Print remaining split results on separate lines
+                for result in data['split_results'][1:]:
+                    print(f"{'':^30} {'':^15} {result['file']:<35} {result['category']:<30} {result['alerts']:<10}")
+            else:
+                print(f"{original_file:<30} {original_alerts:<15} {'No splits created':<35} {'N/A':<30} {'0':<10}")
+            
+            print("-"*80)
+        
+        # Summary totals
+        total_original = sum(data['original_alerts'] for data in summary_data)
+        total_split_files = sum(len(data['split_results']) for data in summary_data)
+        total_split_alerts = sum(sum(result['alerts'] for result in data['split_results']) for data in summary_data)
+        
+        print(f"TOTALS: {len(summary_data)} original file(s), {total_original} original alerts")
+        print(f"        {total_split_files} split file(s) created, {total_split_alerts} total alerts distributed")
+        print("="*80 + "\n")
