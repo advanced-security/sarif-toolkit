@@ -1,0 +1,39 @@
+name: "sarif-toolkit"
+description: "sarif-toolkit"
+
+inputs:
+  sarif:
+    description: SARIF File Location
+    # CodeQL Location by default
+    default: ../results
+
+  working:
+    description: Working directory
+    default: .
+
+  mode:
+    description: Submodule Mode
+    default: sink
+
+  token:
+    description: GitHub Personal Access Token
+    default: ${{ github.token }}
+
+  config-file:
+    description: Relative path to the configuration file
+    default: config.yml
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        PYTHONPATH=${{ github.action_path }}/.. && export PYTHONPATH=${{ github.action_path }}/..
+        pip install requests
+        python3 ${{ github.action_path }}/../sariftoolkit/__main__.py \
+          --enable-subfolder \
+          --subfolder-mode "${{ inputs.mode }}" \
+          --sarif "${{ inputs.sarif }}" \
+          --working "${{ inputs.working }}" \
+          --github-token "${{ inputs.token }}" \
+          --config-file "${{ inputs.config-file }}"
