@@ -25,7 +25,7 @@ runs:
     - shell: bash
       run: |
         PYTHONPATH=${{ github.action_path }}/.. && export PYTHONPATH=${{ github.action_path }}/..
-        pip install requests
+        pip install -r ${{ github.action_path }}/requirements.txt --require-hashes
         python3 ${{ github.action_path }}/../sariftoolkit/__main__.py \
           --enable-submodules \
           --submodules-mode "${{ inputs.mode }}" \
