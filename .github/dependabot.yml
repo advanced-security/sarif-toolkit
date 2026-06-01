@@ -19,6 +19,20 @@ updates:
       development-dependencies:
         dependency-type: "development"
 
+  - package-ecosystem: "pip"
+    directory: "/submodules"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "geekmasher"
+    cooldown:
+      default-days: 3
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
