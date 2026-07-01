@@ -8,7 +8,7 @@
 
 </div>
 
-All things SARIF, as an Action
+All things SARIF, as an Action 
 
 ## ⚡️ Requirements
 
