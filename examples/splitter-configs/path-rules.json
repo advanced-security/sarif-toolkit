@@ -1,0 +1,59 @@
+{
+  "path_rules": [
+    {
+      "name": "Tests",
+      "patterns": [
+        "**/test/**",
+        "**/tests/**", 
+        "**/*test*",
+        "**/spec/**",
+        "**/*spec*"
+      ]
+    },
+    {
+      "name": "Frontend",
+      "patterns": [
+        "**/web/**",
+        "**/frontend/**",
+        "**/client/**",
+        "**/ui/**",
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.vue",
+        "**/*.html",
+        "**/*.css"
+      ]
+    },
+    {
+      "name": "Backend",
+      "patterns": [
+        "**/api/**",
+        "**/server/**",
+        "**/service/**",
+        "**/services/**",
+        "**/backend/**",
+        "**/*.py",
+        "**/*.java",
+        "**/*.cs",
+        "**/*.go"
+      ]
+    },
+    {
+      "name": "Infrastructure", 
+      "patterns": [
+        "**/terraform/**",
+        "**/infra/**",
+        "**/infrastructure/**",
+        "**/deploy/**",
+        "**/deployment/**",
+        "**/*.tf",
+        "**/*.yaml",
+        "**/*.yml",
+        "**/Dockerfile*",
+        "**/docker-compose*"
+      ]
+    }
+  ]
+}

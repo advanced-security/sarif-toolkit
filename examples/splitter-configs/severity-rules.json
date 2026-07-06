@@ -1,0 +1,20 @@
+{
+  "severity_rules": [
+    {
+      "name": "Critical",
+      "severities": ["critical"]
+    },
+    {
+      "name": "High", 
+      "severities": ["high"]
+    },
+    {
+      "name": "Medium",
+      "severities": ["medium"]
+    },
+    {
+      "name": "Low-and-Others",
+      "severities": ["*"]
+    }
+  ]
+}

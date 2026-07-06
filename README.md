@@ -26,6 +26,10 @@ Patches SARIF result files from the relative working directory path to the Actio
 
 This tools allows users to split up SARIF files that use submodules into multiple SARIF files that are then published to there appropriate repository.
 
+### [SARIF Splitter](./splitter/README.md)
+
+Splits large SARIF files into smaller, categorized files based on file paths or security severity levels. Helps overcome upload size restrictions and improves organization for GitHub Advanced Security dashboards.
+
 ## Support
 
 Please create issues for any feature requests, bugs, or documentation problems.
