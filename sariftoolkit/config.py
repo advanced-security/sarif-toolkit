@@ -1,3 +1,4 @@
+import dataclasses
 from dataclasses import dataclass
 
 
@@ -16,6 +17,10 @@ class Plugins:
 
     submodules: PluginConfig = PluginConfig(
         "Submodules", "sariftoolkit.plugins.submodules"
+    )
+
+    subfolders: PluginConfig = PluginConfig(
+        "Subfolders", "sariftoolkit.plugins.subfolders"
     )
 
 

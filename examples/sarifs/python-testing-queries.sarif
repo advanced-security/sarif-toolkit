@@ -707,6 +707,39 @@
               }
             },
             {
+              "id": "cpp/wrong-type-format-argument",
+              "name": "cpp/wrong-type-format-argument",
+              "shortDescription": {
+                "text": "Wrong type of arguments to formatting function"
+              },
+              "fullDescription": {
+                "text": "Calling a printf-like function with the wrong type of arguments causes unpredictable behavior."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "help": {
+                "text": "# Wrong type of arguments to formatting function\nEach call to the `printf` function or a related function should include the type and sequence of arguments defined by the format. If the function is passed arguments of a different type or in a different sequence then the arguments are reinterpreted to fit the type and sequence expected, resulting in unpredictable behavior.\n\n\n## Recommendation\nReview the format and arguments expected by the highlighted function calls. Update either the format or the arguments so that the expected type and sequence of arguments are passed to the function.\n\n\n## Example\n\n```cpp\nint main() {\n  printf(\"%s\\n\", 42); //printf will treat 42 as a char*, will most likely segfault\n  return 0;\n}\n\n```\n\n## References\n* CERT C Coding Standard: [FIO30-C. Exclude user input from format strings](https://www.securecoding.cert.org/confluence/display/c/FIO30-C.+Exclude+user+input+from+format+strings).\n* cplusplus.com: [C++ Functions](http://www.tutorialspoint.com/cplusplus/cpp_functions.htm).\n* CRT Alphabetical Function Reference: [printf, _printf_l, wprintf, _wprintf_l](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/printf-printf-l-wprintf-wprintf-l).\n* Common Weakness Enumeration: [CWE-686](https://cwe.mitre.org/data/definitions/686.html).\n",
+                "markdown": "# Wrong type of arguments to formatting function\nEach call to the `printf` function or a related function should include the type and sequence of arguments defined by the format. If the function is passed arguments of a different type or in a different sequence then the arguments are reinterpreted to fit the type and sequence expected, resulting in unpredictable behavior.\n\n\n## Recommendation\nReview the format and arguments expected by the highlighted function calls. Update either the format or the arguments so that the expected type and sequence of arguments are passed to the function.\n\n\n## Example\n\n```cpp\nint main() {\n  printf(\"%s\\n\", 42); //printf will treat 42 as a char*, will most likely segfault\n  return 0;\n}\n\n```\n\n## References\n* CERT C Coding Standard: [FIO30-C. Exclude user input from format strings](https://www.securecoding.cert.org/confluence/display/c/FIO30-C.+Exclude+user+input+from+format+strings).\n* cplusplus.com: [C++ Functions](http://www.tutorialspoint.com/cplusplus/cpp_functions.htm).\n* CRT Alphabetical Function Reference: [printf, _printf_l, wprintf, _wprintf_l](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/printf-printf-l-wprintf-wprintf-l).\n* Common Weakness Enumeration: [CWE-686](https://cwe.mitre.org/data/definitions/686.html).\n"
+              },
+              "properties": {
+                "tags": [
+                  "reliability",
+                  "correctness",
+                  "security",
+                  "external/cwe/cwe-686"
+                ],
+                "description": "Calling a printf-like function with the wrong type of arguments causes unpredictable\n              behavior.",
+                "id": "cpp/wrong-type-format-argument",
+                "kind": "problem",
+                "name": "Wrong type of arguments to formatting function",
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "7.5"
+              }
+            },
+            {
               "id": "py/request-without-cert-validation",
               "name": "py/request-without-cert-validation",
               "shortDescription": {
@@ -1912,6 +1945,39 @@
         }
       ],
       "results": [
+        {
+          "ruleId": "cpp/wrong-type-format-argument",
+          "rule": {
+            "id": "cpp/wrong-type-format-argument",
+            "index": 2,
+            "toolComponent": {
+              "index": 0
+            }
+          },
+          "message": {
+            "text": "This argument should be of type 'char *' but is of type '(unnamed class/struct/union)'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/core/main.c",
+                  "uriBaseId": "%SRCROOT%",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 45,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b009cce36690efad:1",
+            "primaryLocationStartColumnFingerprint": "40"
+          }
+        },
         {
           "ruleId": "py/flask-debug",
           "ruleIndex": 11,
